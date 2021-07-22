@@ -79,7 +79,30 @@ Step 9: Finally, go to `File` &rarr; `Settings` &rarr; `Build, Execution & Deplo
 Step 10 (for testing): Right click on your project folder, go to *Deployment* and click on *Upload to ros@localhost:
 3456*. You should get a message in green saying that the files have been transferred.
 
-Step 11 (optional): configure path
+Step 11 (optional): This example can easily be extended to a project with several ROS packages. Assuming a folder
+structure like
+
+```bash
+ros-pycharm-example
+   └──source
+       ├──package1
+       └──package2
+```
+
+you would just need to `Add new mapping` in step 8 such that you have one mapping per package. Additionally, after you
+have built the package(s) the first time, you can go to `File` &rarr; `Settings` &rarr; `Project: ros-pycharm-example`
+&rarr; `Python Interpreter` and choose *Show All*.
+
+![Add dist packages](img/add_dist_packages.png)
+
+Then, select your new interpreter and click on *Show paths for selected interpreter* and then click on the plus.
+
+![Add dist packages 2](img/add_dist_packages_2.png)
+
+Finally, choose to add `/home/ros/ros_ws/devel/lib/python3/dist-packages` as additional remote path. This will enable
+full IDE capabilities even for the package(s) currently under development in the project.
+
+![Add dist packages 3](img/add_dist_packages_3.png)
 
 ## Using the example
 
