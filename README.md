@@ -129,5 +129,5 @@ in the docker-images repository.
 
 ## Credits
 
-Credits for the code of this example go to @eeberhard and his
+Credits for the code of this example go to **[@eeberhard](https://github.com/eeberhard)** and his
 equivalent [C++/CLion example](https://github.com/eeberhard/ros-clion-example).
