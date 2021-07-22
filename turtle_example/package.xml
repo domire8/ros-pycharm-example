@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>turtle_example</name>
+  <version>0.0.0</version>
+  <description>The turtle_example package</description>
+  <maintainer email="dominic.reber@epfl.ch">Dominic Reber</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>turtlesim</depend>
+</package>
