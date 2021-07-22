@@ -126,3 +126,8 @@ within the IDE instead of from the third terminal and still see the effect on th
 Note that for GUI applications through Docker on MacOS, you will need to follow the additional
 [display forwarding instructions](https://github.com/aica-technology/docker-images#notes-on-x11-display-forwarding-for-mac)
 in the docker-images repository.
+
+## Credits
+
+Credits for the code of this example go to @eeberhard and his
+equivalent [C++/CLion example](https://github.com/eeberhard/ros-clion-example).
