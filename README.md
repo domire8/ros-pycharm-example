@@ -116,9 +116,11 @@ the names of running containers. In the case of this example:
 ```
 
 Using three terminals, invoke `roscore` in one, then `rosrun turtlesim turtlesim_node` in a second, and finally
-`catkin_make && rosrun turtle_example circler` in the third. You should see the turtle begin to swim in circles.
+`catkin_make && source devel/setup.bash && rosrun turtle_example circler` in the third. You should see the turtle begin
+to swim in circles.
 
-You can also simply use one terminal and invoke `catkin_make && roslaunch turtle_example circler.launch` directly.
+You can also simply use one terminal and
+invoke `catkin_make && source devel/setup.bash && roslaunch turtle_example circler.launch` directly.
 
 With the PyCharm environment properly established, you will also be able to modify the `circler` source script from
 within the IDE instead of from the third terminal and still see the effect on the turtlesim window.
