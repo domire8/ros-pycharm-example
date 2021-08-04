@@ -9,12 +9,12 @@ def main():
     client = rospy.ServiceProxy("/turtle1/teleport_absolute", TeleportAbsolute)
 
     srv = TeleportAbsoluteRequest()
-    srv.x = 0
-    srv.y = 0.5
-    srv.theta = 0
+    srv.x = 2
+    srv.y = 3
+    srv.theta = -45
 
     if client.call(srv):
-        rospy.loginfo("Teleporting to 0, 0.5, 0")
+        rospy.loginfo(f"Teleporting to {srv.x}, {srv.y}, {srv.theta}")
     else:
         rospy.logerr("Failed to call service")
 
