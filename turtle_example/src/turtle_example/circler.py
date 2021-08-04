@@ -14,12 +14,12 @@ class Circler(Node):
         self.time_ = self.create_timer(0.1, self.timer_callback)
 
         srv = TeleportAbsolute.Request()
-        srv.x = 0.0
-        srv.y = 0.5
-        srv.theta = 0.0
+        srv.x = 2.0
+        srv.y = 3.0
+        srv.theta = -45.0
 
         if client.call_async(srv):
-            self.get_logger().info("Teleporting to 0, 0.5, 0")
+            self.get_logger().info(f"Teleporting to {srv.x}, {srv.y}, {srv.theta}")
         else:
             self.get_logger().error("Failed to call service")
 
