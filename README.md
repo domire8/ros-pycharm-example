@@ -115,7 +115,7 @@ project.
 
 Once the server is running in the background, you can use
 the [`connect.sh` script](https://github.com/aica-technology/docker-images/blob/master/scripts/connect.sh)
-to attach new terminal windows by specifying the container name and user. You can use `docker container ls` to lookup
+to attach new terminal windows by specifying the container name and user. You can use `docker container ls` to look up
 the names of running containers. In the case of this example:
 
 ```shell script
