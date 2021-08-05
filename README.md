@@ -151,7 +151,7 @@ advantage is that you can actually run and **debug** your code from within the I
     - Value: $PYTHONPATH:/opt/ros/noetic/lib/python3/dist-packages:/home/ros/ros_ws/devel/lib/python3/dist-packages
 
    ![Add dist packages](img/env_variables.png)
-5. Apply the settings and close the window. Then, you can use the play and debug icons to execute the script either in
+4. Apply the settings and close the window. Then, you can use the play and debug icons to execute the script either in
    run or debug mode. For more information on debugging with PyCharm,
    visit [this](https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html) website.
 
