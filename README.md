@@ -7,8 +7,8 @@ Python project by encapsulating the dependencies in a docker container.
 
 This example installs dependencies for the [`turtlesim`](http://wiki.ros.org/turtlesim) package on top of the base ROS
 image. It defines a new package called [`turtle_example`](./turtle_example) with a simple Python node
-called [`circler`](./turtle_example/scripts/circler)
-which publishes twist commands for a running turtlesim node to drive it in a circle.
+called [`circler`](./turtle_example/scripts/circler) which publishes twist commands for a running turtlesim node to
+drive it in a circle.
 
 ## Base ROS Docker images
 
@@ -68,9 +68,9 @@ connection should now show up with type *SFTP*. Click on `AUTODETECT` in the con
 ![Deployment Settings](img/deployment_settings.png)
 
 **Step 8:** In the mappings tab, change the local path, deployment path, and web path as shown in the picture below.
-This step make sure that the syncing of files between the host and server is correct. Click apply, and finally make sure
-that the new connection is used as default (`ros@localhost:3456` in the list of connections should be bold, otherwise
-use the tick above to set it as default).
+These steps make sure that the syncing of files between the host and server is correct. Click apply, and finally make
+sure that the new connection is used as default (`ros@localhost:3456` in the list of connections should be bold,
+otherwise use the tick above to set it as default).
 
 ![Deployment Settings 2](img/deployment_settings_2.png)
 
