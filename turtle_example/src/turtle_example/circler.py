@@ -36,3 +36,7 @@ def main():
     rclpy.spin(circler)
     circler.destroy_node()
     rclpy.shutdown()
+    
+
+if __name__ == '__main__':
+    main()

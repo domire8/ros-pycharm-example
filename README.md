@@ -1,7 +1,7 @@
 # Developing Python ROS2 in PyCharm
 
-This is an example project to illustrate how use PyCharm as a fully integrated development environment for a ROS2 Python
-project by encapsulating the dependencies in a docker container.
+This is an example project to illustrate how use PyCharm as a fully integrated development environment (IDE) for a ROS2
+Python project by encapsulating the dependencies in a docker container.
 
 ## The turtle example
 
@@ -28,8 +28,7 @@ docker pull ghcr.io/aica-technology/ros-ws:foxy
 
 Prerequisites: Docker, PyCharm Professional 2021 or newer, base ROS2 docker image from AICA
 
-**Step 1:** Build the docker image with `docker build -t domire8/ros2-pycharm-example .` (this will take a while the
-first time around).
+**Step 1:** Build the docker image with `docker build -t domire8/ros2-pycharm-example .`
 
 **Step 2:** Use the [`server.sh` script](https://github.com/aica-technology/docker-images/blob/master/scripts/server.sh)
 in the aica-technology/docker-images repository to start a background container for the appropriate user with a desired
@@ -59,7 +58,7 @@ connecting to the SSH server. Confirm with yes.
 
 ![Configure Interpreter](img/configure_interpreter.png)
 
-**Step 6:** In the next window, change the interpreter path to `usr/bin/python3` and make sure that the option
+**Step 6:** In the next window, change the interpreter path to `/usr/bin/python3` and make sure that the option
 *Automatically upload project files to the server* is activated. Do not worry about the rest for now and click finish.
 
 ![Configure Interpreter 2](img/configure_interpreter_2.png)
@@ -122,18 +121,44 @@ the names of running containers. In the case of this example:
 path/to/aica-technology/docker-images/scripts/connect.sh domire8-ros2-pycharm-example-ssh --user ros
 ```
 
-Using two terminals, invoke `ros2 run turtlesim turtlesim_node` in one, and `ros2 run turtle_example circler` in the
-second one. You should see the turtle begin to swim in circles.
-
-You can also simply use one terminal and invoke `ros2 launch turtle_example circler.launch.py`
-directly.
-
-With the PyCharm environment properly established, you will also be able to modify the `circler` source script from
-within the IDE instead of from the third terminal and still see the effect on the turtlesim window.
-
 Note that for GUI applications through Docker on MacOS, you will need to follow the additional
 [display forwarding instructions](https://github.com/aica-technology/docker-images#notes-on-x11-display-forwarding-for-mac)
 in the docker-images repository.
+
+### Running the example outside the IDE
+
+Using two terminals, invoke `ros2 run turtlesim turtlesim_node` in one, and `ros2 run turtle_example circler` in the
+second one. You should see the turtle begin to swim in circles.
+
+You can also simply use one terminal and invoke `ros2 launch turtle_example circler.launch.py` directly.
+
+With the PyCharm environment established as explained above and automatic upload to the server enabled, you can modify
+the code in `circler`, press save, go to the connected terminal, and immediately do `ros2 run turtle_example circler` to
+see the changes.
+
+### Running and debugging the example within the IDE
+
+Code insight and completion are just two advantages of configuring the Python interpreter in the IDE. Another big
+advantage is that you can actually run and **debug** your code from within the IDE. To do this, follow these steps:
+
+1. In a terminal, invoke `ros2 run turtlesim turtlesim_node`. You should see the turtle in the bottom left corner of the
+   window (not moving yet).
+2. Go to the `circler.py` script and press the play button next to the line `if __name__ == '__main__':`. This won't
+   work the first time around. But it will create a configuration *CIRCLER* that you should be able to see in the top
+   right corner of PyCharm (see picture below). If this is not the case, activate `View` &rarr; `Appearance`
+   &rarr; `Navigation Bar`.
+   ![Add dist packages](img/edit_configuration.png)
+3. Click on *CIRCLER*  &rarr; `Edit Configurations`. Under `Environment` &rarr; `Environment Variables` click on
+   `Edit environment variables` and add an environment variable with
+    - Name: PYTHONPATH
+    - Value: $PYTHONPATH:/opt/ros/foxy/lib/python3.8/site-packages:/home/ros2/ros2_ws/install/turtle_example/lib/python3.8/site-packages
+
+   Note that if you are working with several packages, you have to append 
+   /home/ros2/ros2_ws/install/<package_name>/lib/python3.8/site-packages to the PYTHONPATH for each package.
+   ![Add dist packages](img/env_variables.png)
+4. Apply the settings and close the window. Then, you can use the play and debug icons to execute the script either in
+   run or debug mode. For more information on debugging with PyCharm,
+   visit [this](https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html) website.
 
 ## Credits
 
