@@ -25,3 +25,7 @@ def main():
         vel.angular.z = 0.5
         vel_pub.publish(vel)
         rate.sleep()
+
+
+if __name__ == '__main__':
+    main()

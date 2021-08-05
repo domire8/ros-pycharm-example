@@ -1,7 +1,7 @@
 # Developing Python ROS in PyCharm
 
-This is an example project to illustrate how use PyCharm as a fully integrated development environment for a ROS Python
-project by encapsulating the dependencies in a docker container.
+This is an example project to illustrate how use PyCharm as a fully integrated development environment (IDE) for a ROS
+Python project by encapsulating the dependencies in a docker container.
 
 ## The turtle example
 
@@ -111,24 +111,49 @@ full IDE capabilities even for the package(s) currently under development in the
 
 Once the server is running in the background, you can use
 the [`connect.sh` script](https://github.com/aica-technology/docker-images/blob/master/scripts/connect.sh)
-to attach new terminal windows by specifying the container name and user. You can use `docker container ls` to lookup
+to attach new terminal windows by specifying the container name and user. You can use `docker container ls` to look up
 the names of running containers. In the case of this example:
 
 ```shell script
 path/to/aica-technology/docker-images/scripts/connect.sh domire8-ros-pycharm-example-ssh --user ros
 ```
 
+Note that for GUI applications through Docker on MacOS, you will need to follow the additional
+[display forwarding instructions](https://github.com/aica-technology/docker-images#notes-on-x11-display-forwarding-for-mac)
+in the docker-images repository.
+
+### Running the example outside the IDE
+
 Using three terminals, invoke `roscore` in one, then `rosrun turtlesim turtlesim_node` in a second, and finally
 `rosrun turtle_example circler` in the third. You should see the turtle begin to swim in circles.
 
 You can also simply use one terminal and invoke `roslaunch turtle_example circler.launch` directly.
 
-With the PyCharm environment properly established, you will also be able to modify the `circler` source script from
-within the IDE instead of from the third terminal and still see the effect on the turtlesim window.
+With the PyCharm environment established as explained above and automatic upload to the server enabled, you can modify
+the code in `circler`, press save, go to the connected terminal, and immediately do `rosrun turtle_example circler` to
+see the changes.
 
-Note that for GUI applications through Docker on MacOS, you will need to follow the additional
-[display forwarding instructions](https://github.com/aica-technology/docker-images#notes-on-x11-display-forwarding-for-mac)
-in the docker-images repository.
+### Running and debugging the example within the IDE
+
+Code insight and completion are just two advantages of configuring the Python interpreter in the IDE. Another big
+advantage is that you can actually run and **debug** your code from within the IDE. To do this, follow these steps:
+
+1. Using two terminals, invoke `roscore` in one, and `rosrun turtlesim turtlesim_node` in the other one. You should see
+   the turtle in the bottom left corner of the window (not moving yet).
+2. Go to the `circler.py` script and press the play button next to the line `if __name__ == '__main__':`. This won't
+   work the first time around. But it will create a configuration *CIRCLER* that you should be able to see in the top
+   right corner of PyCharm (see picture below). If this is not the case, activate `View` &rarr; `Appearance`
+   &rarr; `Navigation Bar`.
+   ![Add dist packages](img/edit_configuration.png)
+3. Click on *CIRCLER*  &rarr; `Edit Configurations`. Under `Environment` &rarr; `Environment Variables` click on
+   `Edit environment variables` and add an environment variable with
+    - Name: PYTHONPATH
+    - Value: $PYTHONPATH:/opt/ros/noetic/lib/python3/dist-packages:/home/ros/ros_ws/devel/lib/python3/dist-packages
+
+   ![Add dist packages](img/env_variables.png)
+5. Apply the settings and close the window. Then, you can use the play and debug icons to execute the script either in
+   run or debug mode. For more information on debugging with PyCharm,
+   visit [this](https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html) website.
 
 ## Credits
 
