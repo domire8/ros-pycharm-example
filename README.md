@@ -3,6 +3,9 @@
 This is an example project to illustrate how use PyCharm as a fully integrated development environment (IDE) for a ROS2
 Python project by encapsulating the dependencies in a docker container.
 
+Looking for instructions for ROS and not ROS2? Find them
+on [this](https://github.com/domire8/ros-pycharm-example/tree/ros-noetic) branch.
+
 ## The turtle example
 
 This example installs dependencies for the [`turtlesim`](http://wiki.ros.org/turtlesim) package on top of the base ROS2
