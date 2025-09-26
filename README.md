@@ -3,8 +3,9 @@
 This is an example project to illustrate how use PyCharm as a fully integrated development environment (IDE) for a ROS2
 Python project by encapsulating the dependencies in a docker container.
 
-Looking for instructions for ROS and not ROS2? Find them
-on [this](https://github.com/domire8/ros-pycharm-example/tree/ros-noetic) branch.
+This branch is configured for **ROS2 Humble**. Looking for other versions?
+- ROS2 Foxy: [main branch](https://github.com/domire8/ros-pycharm-example)
+- ROS Noetic: [ros-noetic branch](https://github.com/domire8/ros-pycharm-example/tree/ros-noetic)
 
 ## The turtle example
 
@@ -24,7 +25,7 @@ To begin, clone the [docker-images](https://github.com/aica-technology/docker-im
 helper scripts and additionally pull the ROS workspace image with
 
 ```bash
-docker pull ghcr.io/aica-technology/ros-ws:foxy
+docker pull ghcr.io/aica-technology/ros-ws:humble
 ```
 
 ## PyCharm setup
@@ -37,7 +38,7 @@ Prerequisites: Docker, PyCharm Professional 2021 or newer, base ROS2 docker imag
 in the aica-technology/docker-images repository to start a background container for the appropriate user with a desired
 port number.
 
-In this example, we will use user `ros2` for a foxy version image. We will also choose to use port 4567, though the
+In this example, we will use user `ros2` for a humble version image. We will also choose to use port 4567, though the
 specific number does not matter.
 
 ```shell script
@@ -154,10 +155,10 @@ advantage is that you can actually run and **debug** your code from within the I
 3. Click on *CIRCLER*  &rarr; `Edit Configurations`. Under `Environment` &rarr; `Environment Variables` click on
    `Edit environment variables` and add an environment variable with
     - Name: PYTHONPATH
-    - Value: $PYTHONPATH:/opt/ros/foxy/lib/python3.8/site-packages:/home/ros2/ros2_ws/install/turtle_example/lib/python3.8/site-packages
+    - Value: $PYTHONPATH:/opt/ros/humble/lib/python3.10/site-packages:/home/ros2/ros2_ws/install/turtle_example/lib/python3.10/site-packages
 
    Note that if you are working with several packages, you have to append 
-   /home/ros2/ros2_ws/install/<package_name>/lib/python3.8/site-packages to the PYTHONPATH for each package.
+   /home/ros2/ros2_ws/install/<package_name>/lib/python3.10/site-packages to the PYTHONPATH for each package.
    ![Add dist packages](img/env_variables.png)
 4. Apply the settings and close the window. Then, you can use the play and debug icons to execute the script either in
    run or debug mode. For more information on debugging with PyCharm,
